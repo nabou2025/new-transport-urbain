@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>TranspoBot — Trajets</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">🚌 TranspoBot</div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Dashboard</a>
+    <a href="vehicules.html" class="nav-link">Véhicules</a>
+    <a href="chauffeurs.html" class="nav-link">Chauffeurs</a>
+    <a href="trajets.html" class="nav-link active">Trajets</a>
+    <a href="chat.html" class="nav-link highlight">💬 Assistant IA</a>
+  </div>
+</nav>
+<main class="container">
+  <h1 class="page-title">Trajets</h1>
+  <div class="card">
+    <div class="table-wrap">
+      <table id="tbl">
+        <tr><td class="loading-cell">Chargement...</td></tr>
+      </table>
+    </div>
+  </div>
+</main>
+<script>
+function badge(s){const m={termine:['#E6F1FB','#0C447C'],en_cours:['#EAF3DE','#27500A'],planifie:['#EEEDFE','#3C3489'],annule:['#FCEBEB','#791F1F']};const[bg,c]=m[s]||['#eee','#333'];return`<span class="badge" style="background:${bg};color:${c}">${s.replace('_',' ')}</span>`}
+function fmt(dt){if(!dt)return'—';return new Date(dt).toLocaleString('fr-SN',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}
+fetch('http://localhost:3000/api/trajets').then(r=>r.json()).then(t=>{
+  document.getElementById('tbl').innerHTML=`
+    <tr><th>Chauffeur</th><th>Véhicule</th><th>Ligne</th><th>Départ</th><th>Arrivée</th><th>Passagers</th><th>Statut</th></tr>
+    ${t.map(x=>`<tr>
+      <td>${x.nom} ${x.prenom}</td>
+      <td><code>${x.immatriculation}</code></td>
+      <td>${x.ligne}</td>
+      <td>${fmt(x.date_heure_depart)}</td>
+      <td>${fmt(x.date_heure_arrivee)}</td>
+      <td>${x.nb_passagers}</td>
+      <td>${badge(x.statut)}</td>
+    </tr>`).join('')}`;
+});
+</script>
+</body>
+</html>

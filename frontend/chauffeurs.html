@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>TranspoBot — Chauffeurs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">🚌 TranspoBot</div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Dashboard</a>
+    <a href="vehicules.html" class="nav-link">Véhicules</a>
+    <a href="chauffeurs.html" class="nav-link active">Chauffeurs</a>
+    <a href="trajets.html" class="nav-link">Trajets</a>
+    <a href="chat.html" class="nav-link highlight">💬 Assistant IA</a>
+  </div>
+</nav>
+<main class="container">
+  <h1 class="page-title">Chauffeurs</h1>
+  <div class="card">
+    <div class="table-wrap">
+      <table id="tbl">
+        <tr><td class="loading-cell">Chargement...</td></tr>
+      </table>
+    </div>
+  </div>
+</main>
+<script>
+function badge(s){const m={actif:['#E1F5EE','#085041'],conge:['#FAEEDA','#633806'],suspendu:['#FCEBEB','#791F1F']};const[bg,c]=m[s]||['#eee','#333'];return`<span class="badge" style="background:${bg};color:${c}">${s}</span>`}
+fetch('http://localhost:3000/api/chauffeurs').then(r=>r.json()).then(c=>{
+  document.getElementById('tbl').innerHTML=`
+    <tr><th>Nom</th><th>Prénom</th><th>Téléphone</th><th>Email</th><th>Permis</th><th>Embauche</th><th>Statut</th></tr>
+    ${c.map(x=>`<tr>
+      <td><strong>${x.nom}</strong></td><td>${x.prenom}</td>
+      <td>${x.telephone}</td><td>${x.email}</td>
+      <td><code>${x.numero_permis}</code></td>
+      <td>${new Date(x.date_embauche).toLocaleDateString('fr')}</td>
+      <td>${badge(x.statut)}</td>
+    </tr>`).join('')}`;
+});
+</script>
+</body>
+</html>
