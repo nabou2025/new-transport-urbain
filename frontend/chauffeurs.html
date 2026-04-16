@@ -28,7 +28,7 @@
 </main>
 <script>
 function badge(s){const m={actif:['#E1F5EE','#085041'],conge:['#FAEEDA','#633806'],suspendu:['#FCEBEB','#791F1F']};const[bg,c]=m[s]||['#eee','#333'];return`<span class="badge" style="background:${bg};color:${c}">${s}</span>`}
-fetch('http://localhost:3000/api/chauffeurs').then(r=>r.json()).then(c=>{
+fetch('https://new-transport-urbain-production.up.railway.app/api/vehicules').then(r=>r.json()).then(c=>{
   document.getElementById('tbl').innerHTML=`
     <tr><th>Nom</th><th>Prénom</th><th>Téléphone</th><th>Email</th><th>Permis</th><th>Embauche</th><th>Statut</th></tr>
     ${c.map(x=>`<tr>
