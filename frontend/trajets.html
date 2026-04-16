@@ -29,7 +29,7 @@
 <script>
 function badge(s){const m={termine:['#E6F1FB','#0C447C'],en_cours:['#EAF3DE','#27500A'],planifie:['#EEEDFE','#3C3489'],annule:['#FCEBEB','#791F1F']};const[bg,c]=m[s]||['#eee','#333'];return`<span class="badge" style="background:${bg};color:${c}">${s.replace('_',' ')}</span>`}
 function fmt(dt){if(!dt)return'—';return new Date(dt).toLocaleString('fr-SN',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}
-fetch('http://localhost:3000/api/trajets').then(r=>r.json()).then(t=>{
+fetch('https://new-transport-urbain-production.up.railway.app/api/trajets').then(r=>r.json()).then(t=>{
   document.getElementById('tbl').innerHTML=`
     <tr><th>Chauffeur</th><th>Véhicule</th><th>Ligne</th><th>Départ</th><th>Arrivée</th><th>Passagers</th><th>Statut</th></tr>
     ${t.map(x=>`<tr>
