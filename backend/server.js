@@ -3,6 +3,21 @@ const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
 
+
+console.log('=== DEBUG ===');
+console.log('process.cwd() :', process.cwd());
+console.log('__dirname :', __dirname);
+console.log('Contenu du dossier :');
+const fs = require('fs');
+fs.readdirSync(process.cwd()).forEach(file => {
+  console.log('  -', file);
+});
+console.log('=== FIN DEBUG ===');
+
+
+
+
+
 const app = express();
 app.use(cors());
 app.use(express.json());
