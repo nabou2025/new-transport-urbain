@@ -19,7 +19,7 @@ app.use('/api/stats',      require('./routes/stats'));
 app.use('/api/chat',       require('./chatbot/ai'));
 
 // Route fallback → sert index.html pour toutes les autres URLs
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
 });
 
