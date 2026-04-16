@@ -15,6 +15,8 @@
     --bg:#f0f4f8;--card:#ffffff;--text:#1a202c;--muted:#64748b;--border:#e2e8f0;
   }
   body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--text)}
+
+  /* ===== HEADER ===== */
   header{
     background:linear-gradient(135deg,#1a56db 0%,#1e40af 100%);
     color:white;padding:1rem 2rem;
@@ -30,15 +32,163 @@
     cursor:pointer;animation:pulse 2s infinite;display:none;align-items:center;gap:0.3rem;
   }
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.7}}
+
+  /* ===== TABS ===== */
   .tabs{background:white;border-bottom:2px solid var(--border);padding:0 2rem;display:flex}
-  .tab{
-    padding:0.8rem 1.5rem;cursor:pointer;font-weight:600;font-size:0.9rem;
-    color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.2s;
-  }
+  .tab{padding:0.8rem 1.5rem;cursor:pointer;font-weight:600;font-size:0.9rem;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.2s}
   .tab.active{color:var(--blue);border-bottom-color:var(--blue)}
   .tab:hover{color:var(--blue)}
-  .page{display:none;padding:1.5rem;max-width:1400px;margin:0 auto}
+
+  /* ===== PAGES ===== */
+  .page{display:none}
   .page.active{display:block}
+
+  /* ===== DASHBOARD HERO ===== */
+  #page-dashboard{
+    background: linear-gradient(160deg, #0f172a 0%, #1e3a5f 50%, #1a56db 100%);
+    min-height: calc(100vh - 110px);
+    padding: 0;
+  }
+
+  .dashboard-hero {
+    position: relative;
+    padding: 3rem 2.5rem 2rem;
+    overflow: hidden;
+  }
+
+  /* Cercles décoratifs en background */
+  .dashboard-hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,86,219,0.3) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .dashboard-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 10%;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-top {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+  .hero-greeting h2 {
+    font-size: 1.8rem; font-weight: 700; color: white;
+    margin-bottom: 0.3rem;
+  }
+  .hero-greeting p { color: rgba(255,255,255,0.65); font-size: 0.95rem; }
+  .hero-date {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px; padding: 0.6rem 1.2rem;
+    color: white; font-size: 0.85rem; font-weight: 500;
+  }
+
+  /* KPI CARDS HERO */
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .kpi-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px; padding: 1.4rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .kpi-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
+  .kpi-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    border-radius: 16px 16px 0 0;
+  }
+  .kpi-card.blue::before { background: #60a5fa; }
+  .kpi-card.green::before { background: #34d399; }
+  .kpi-card.orange::before { background: #fbbf24; }
+  .kpi-card.red::before { background: #f87171; }
+  .kpi-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; margin-bottom: 1rem;
+  }
+  .kpi-card.blue .kpi-icon { background: rgba(96,165,250,0.2); }
+  .kpi-card.green .kpi-icon { background: rgba(52,211,153,0.2); }
+  .kpi-card.orange .kpi-icon { background: rgba(251,191,36,0.2); }
+  .kpi-card.red .kpi-icon { background: rgba(248,113,113,0.2); }
+  .kpi-value { font-size: 2.2rem; font-weight: 700; color: white; line-height: 1; margin-bottom: 0.3rem; }
+  .kpi-label { font-size: 0.78rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
+  .kpi-trend { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.5rem; }
+
+  /* BOTTOM SECTION */
+  .dashboard-bottom {
+    display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;
+    padding: 0 2.5rem 2.5rem;
+  }
+
+  /* GLASS CARDS */
+  .glass-card {
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px; padding: 1.4rem;
+  }
+  .glass-card h3 {
+    color: white; font-size: 0.95rem; font-weight: 600;
+    margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  /* TABLE DANS GLASS */
+  .glass-table { width: 100%; border-collapse: collapse; }
+  .glass-table thead th {
+    color: rgba(255,255,255,0.5); font-size: 0.72rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    font-weight: 600; padding: 0 0.5rem 0.7rem; text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .glass-table tbody td {
+    padding: 0.7rem 0.5rem; color: rgba(255,255,255,0.85);
+    font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .glass-table tbody tr:last-child td { border-bottom: none; }
+  .glass-table tbody tr:hover td { background: rgba(255,255,255,0.05); }
+
+  /* BADGES GLASS */
+  .gbadge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 600; }
+  .gbadge-green  { background: rgba(52,211,153,0.2);  color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
+  .gbadge-orange { background: rgba(251,191,36,0.2);  color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+  .gbadge-red    { background: rgba(248,113,113,0.2); color: #f87171; border: 1px solid rgba(248,113,113,0.3); }
+
+  /* MINI CHART VEHICULES */
+  .veh-list { display: flex; flex-direction: column; gap: 0.7rem; }
+  .veh-item {
+    display: flex; align-items: center; gap: 0.8rem;
+    padding: 0.7rem; border-radius: 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.2s;
+  }
+  .veh-item:hover { background: rgba(255,255,255,0.1); }
+  .veh-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .veh-dot.actif { background: #34d399; box-shadow: 0 0 6px #34d399; }
+  .veh-dot.maintenance { background: #fbbf24; box-shadow: 0 0 6px #fbbf24; }
+  .veh-dot.hors_service { background: #f87171; box-shadow: 0 0 6px #f87171; }
+  .veh-info { flex: 1; }
+  .veh-immat { color: white; font-size: 0.85rem; font-weight: 600; }
+  .veh-type { color: rgba(255,255,255,0.5); font-size: 0.75rem; }
+  .veh-km { color: rgba(255,255,255,0.6); font-size: 0.78rem; }
+
+  /* ===== AUTRES PAGES (inchangées) ===== */
+  .inner-page { padding: 1.5rem; max-width: 1400px; margin: 0 auto; }
   .card{background:var(--card);border-radius:12px;padding:1.2rem;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
   .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
@@ -110,72 +260,116 @@
   <div class="tab" onclick="showTab('alertes')">🚨 Alertes</div>
 </div>
 
-<!-- PAGE DASHBOARD -->
+<!-- ===== PAGE DASHBOARD (nouveau design) ===== -->
 <div id="page-dashboard" class="page active">
-  <div class="grid-4">
-    <div class="stat">         <div class="val" id="s1">—</div><div class="lbl">Trajets terminés</div></div>
-    <div class="stat green">  <div class="val" id="s2">—</div><div class="lbl">En cours</div></div>
-    <div class="stat orange"> <div class="val" id="s3">—</div><div class="lbl">Véhicules actifs</div></div>
-    <div class="stat red">    <div class="val" id="s4">—</div><div class="lbl">Incidents ouverts</div></div>
-  </div>
-  <div class="grid-2">
-    <div class="card"><h2>🕒 Trajets récents</h2><div class="results" id="trajets-table"><p class="empty">Chargement...</p></div></div>
-    <div class="card"><h2>🚗 Véhicules</h2><div class="results" id="vehicules-table"><p class="empty">Chargement...</p></div></div>
-  </div>
-</div>
-
-<!-- PAGE KPI -->
-<div id="page-kpi" class="page">
-  <div style="display:flex;justify-content:flex-end;margin-bottom:1rem">
-    <button class="btn-export" onclick="exportPDF()">⬇️ Exporter PDF</button>
-  </div>
-  <div class="grid-3" style="margin-bottom:1.5rem">
-    <div class="card"><h2>📅 Trajets par ligne</h2><div class="chart-container"><canvas id="chart-lignes"></canvas></div></div>
-    <div class="card"><h2>💰 Recette par mois (FCFA)</h2><div class="chart-container"><canvas id="chart-recettes"></canvas></div></div>
-    <div class="card"><h2>⚠️ Incidents par type</h2><div class="chart-container"><canvas id="chart-incidents"></canvas></div></div>
-  </div>
-  <div class="grid-2">
-    <div class="card"><h2>🏆 Top chauffeurs (nb trajets)</h2><div class="chart-container"><canvas id="chart-chauffeurs"></canvas></div></div>
-    <div class="card"><h2>🚌 Statut des véhicules</h2><div class="chart-container"><canvas id="chart-vehicules"></canvas></div></div>
-  </div>
-</div>
-
-<!-- PAGE CHAT -->
-<div id="page-chat" class="page">
-  <div class="grid-2">
-    <div class="card">
-      <h2>💬 Assistant TranspoBot</h2>
-      <div class="suggestions">
-        <button onclick="ask('Combien de trajets ont été effectués cette semaine ?')">Trajets semaine</button>
-        <button onclick="ask('Quel chauffeur a le plus de trajets ?')">Meilleur chauffeur</button>
-        <button onclick="ask('Quels véhicules sont en maintenance ?')">Maintenance</button>
-        <button onclick="ask('Liste les incidents graves non résolus')">Incidents graves</button>
-        <button onclick="ask('Quelle est la recette totale du mois de mars 2026 ?')">Recette mars</button>
-        <button onclick="ask('Combien de chauffeurs sont disponibles ?')">Chauffeurs dispo</button>
+  <div class="dashboard-hero">
+    <div class="hero-top">
+      <div class="hero-greeting">
+        <h2>Bonjour 👋 Bienvenue sur TranspoBot</h2>
+        <p>Voici un aperçu en temps réel de votre flotte de transport urbain</p>
       </div>
-      <div class="chat-box" id="chat-box">
-        <div class="msg bot">
-          <div class="bubble">👋 Bonjour ! Je suis TranspoBot.<br>Posez-moi n'importe quelle question sur votre flotte, trajets ou chauffeurs !</div>
+      <div class="hero-date" id="hero-date">Chargement...</div>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi-card blue">
+        <div class="kpi-icon">🛣️</div>
+        <div class="kpi-value" id="s1">—</div>
+        <div class="kpi-label">Trajets terminés</div>
+        <div class="kpi-trend">Total des trajets complétés</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-icon">🚌</div>
+        <div class="kpi-value" id="s2">—</div>
+        <div class="kpi-label">En cours</div>
+        <div class="kpi-trend">Trajets actifs maintenant</div>
+      </div>
+      <div class="kpi-card orange">
+        <div class="kpi-icon">🚗</div>
+        <div class="kpi-value" id="s3">—</div>
+        <div class="kpi-label">Véhicules actifs</div>
+        <div class="kpi-trend">Flotte opérationnelle</div>
+      </div>
+      <div class="kpi-card red">
+        <div class="kpi-icon">⚠️</div>
+        <div class="kpi-value" id="s4">—</div>
+        <div class="kpi-label">Incidents ouverts</div>
+        <div class="kpi-trend">Nécessitent attention</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-bottom">
+    <!-- Trajets récents -->
+    <div class="glass-card">
+      <h3>🕒 Trajets récents</h3>
+      <div id="trajets-table-dash"><p style="color:rgba(255,255,255,0.4);text-align:center;padding:1rem">Chargement...</p></div>
+    </div>
+
+    <!-- Véhicules -->
+    <div class="glass-card">
+      <h3>🚗 État de la flotte</h3>
+      <div class="veh-list" id="veh-list-dash"><p style="color:rgba(255,255,255,0.4);text-align:center;padding:1rem">Chargement...</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE KPI (inchangée) ===== -->
+<div id="page-kpi" class="page">
+  <div class="inner-page">
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem">
+      <button class="btn-export" onclick="exportPDF()">⬇️ Exporter PDF</button>
+    </div>
+    <div class="grid-3" style="margin-bottom:1.5rem">
+      <div class="card"><h2>📅 Trajets par ligne</h2><div class="chart-container"><canvas id="chart-lignes"></canvas></div></div>
+      <div class="card"><h2>💰 Recette par mois (FCFA)</h2><div class="chart-container"><canvas id="chart-recettes"></canvas></div></div>
+      <div class="card"><h2>⚠️ Incidents par type</h2><div class="chart-container"><canvas id="chart-incidents"></canvas></div></div>
+    </div>
+    <div class="grid-2">
+      <div class="card"><h2>🏆 Top chauffeurs</h2><div class="chart-container"><canvas id="chart-chauffeurs"></canvas></div></div>
+      <div class="card"><h2>🚌 Statut des véhicules</h2><div class="chart-container"><canvas id="chart-vehicules"></canvas></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE CHAT (inchangée) ===== -->
+<div id="page-chat" class="page">
+  <div class="inner-page">
+    <div class="grid-2">
+      <div class="card">
+        <h2>💬 Assistant TranspoBot</h2>
+        <div class="suggestions">
+          <button onclick="ask('Combien de trajets ont été effectués cette semaine ?')">Trajets semaine</button>
+          <button onclick="ask('Quel chauffeur a le plus de trajets ?')">Meilleur chauffeur</button>
+          <button onclick="ask('Quels véhicules sont en maintenance ?')">Maintenance</button>
+          <button onclick="ask('Liste les incidents graves non résolus')">Incidents graves</button>
+          <button onclick="ask('Quelle est la recette totale du mois de mars 2026 ?')">Recette mars</button>
+          <button onclick="ask('Combien de chauffeurs sont disponibles ?')">Chauffeurs dispo</button>
+        </div>
+        <div class="chat-box" id="chat-box">
+          <div class="msg bot"><div class="bubble">👋 Bonjour ! Je suis TranspoBot.<br>Posez-moi n'importe quelle question sur votre flotte, trajets ou chauffeurs !</div></div>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="user-input" placeholder="Ex: Combien de trajets ce mois-ci ?" onkeypress="if(event.key==='Enter') sendMessage()">
+          <button onclick="sendMessage()">Envoyer ➤</button>
         </div>
       </div>
-      <div class="chat-input">
-        <input type="text" id="user-input" placeholder="Ex: Combien de trajets ce mois-ci ?" onkeypress="if(event.key==='Enter') sendMessage()">
-        <button onclick="sendMessage()">Envoyer ➤</button>
+      <div class="card">
+        <h2>📋 Résultats SQL</h2>
+        <div id="results-section" style="display:none"><div class="results" id="results-table"></div></div>
+        <div id="no-results" class="empty">Les résultats de vos requêtes apparaîtront ici</div>
       </div>
-    </div>
-    <div class="card">
-      <h2>📋 Résultats SQL</h2>
-      <div id="results-section" style="display:none"><div class="results" id="results-table"></div></div>
-      <div id="no-results" class="empty">Les résultats de vos requêtes apparaîtront ici</div>
     </div>
   </div>
 </div>
 
-<!-- PAGE ALERTES -->
+<!-- ===== PAGE ALERTES (inchangée) ===== -->
 <div id="page-alertes" class="page">
-  <div class="grid-2">
-    <div class="card"><h2>🔴 Alertes actives</h2><div id="alertes-content"><p class="empty">Chargement...</p></div></div>
-    <div class="card"><h2>💡 Recommandations IA</h2><div id="recommandations-content"><p class="empty">Analyse...</p></div></div>
+  <div class="inner-page">
+    <div class="grid-2">
+      <div class="card"><h2>🔴 Alertes actives</h2><div id="alertes-content"><p class="empty">Chargement...</p></div></div>
+      <div class="card"><h2>💡 Recommandations IA</h2><div id="recommandations-content"><p class="empty">Analyse...</p></div></div>
+    </div>
   </div>
 </div>
 
@@ -191,7 +385,6 @@
 </div>
 
 <script>
-// ✅ URL DYNAMIQUE : marche en local ET en production Railway
 const API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:3000'
   : 'https://new-transport-urbain-production.up.railway.app';
@@ -199,6 +392,9 @@ const API = window.location.hostname === 'localhost' || window.location.hostname
 let alertesData = [];
 let chartsLoaded = false;
 let chartInstances = {};
+
+// Date hero
+document.getElementById('hero-date').textContent = new Date().toLocaleDateString('fr', {weekday:'long',day:'numeric',month:'long',year:'numeric'});
 
 function showTab(name) {
   const names = ['dashboard','kpi','chat','alertes'];
@@ -224,15 +420,15 @@ async function loadTrajets() {
   try {
     const r = await fetch(`${API}/api/trajets/recent`);
     const data = await r.json();
-    const c = document.getElementById('trajets-table');
-    if (!data.length) { c.innerHTML='<p class="empty">Aucun trajet</p>'; return; }
+    const c = document.getElementById('trajets-table-dash');
+    if (!data.length) { c.innerHTML='<p style="color:rgba(255,255,255,0.4);text-align:center">Aucun trajet</p>'; return; }
     const rows = data.map(t => `<tr>
       <td>${t.ligne||'—'}</td>
       <td>${t.chauffeur_nom||''} ${t.chauffeur_prenom||''}</td>
       <td>${new Date(t.date_heure_depart).toLocaleDateString('fr')}</td>
-      <td><span class="badge ${t.statut==='termine'?'badge-green':t.statut==='en_cours'?'badge-orange':'badge-red'}">${t.statut}</span></td>
+      <td><span class="gbadge ${t.statut==='termine'?'gbadge-green':t.statut==='en_cours'?'gbadge-orange':'gbadge-red'}">${t.statut}</span></td>
     </tr>`).join('');
-    c.innerHTML = `<table><thead><tr><th>Ligne</th><th>Chauffeur</th><th>Date</th><th>Statut</th></tr></thead><tbody>${rows}</tbody></table>`;
+    c.innerHTML = `<table class="glass-table"><thead><tr><th>Ligne</th><th>Chauffeur</th><th>Date</th><th>Statut</th></tr></thead><tbody>${rows}</tbody></table>`;
   } catch(e) {}
 }
 
@@ -240,14 +436,16 @@ async function loadVehicules() {
   try {
     const r = await fetch(`${API}/api/vehicules`);
     const data = await r.json();
-    const c = document.getElementById('vehicules-table');
-    const rows = data.slice(0,6).map(v => `<tr>
-      <td><strong>${v.immatriculation}</strong></td>
-      <td>${v.type}</td>
-      <td>${Number(v.kilometrage||0).toLocaleString()} km</td>
-      <td><span class="badge ${v.statut==='actif'?'badge-green':v.statut==='maintenance'?'badge-orange':'badge-red'}">${v.statut}</span></td>
-    </tr>`).join('');
-    c.innerHTML = `<table><thead><tr><th>Immat.</th><th>Type</th><th>KM</th><th>Statut</th></tr></thead><tbody>${rows}</tbody></table>`;
+    const c = document.getElementById('veh-list-dash');
+    c.innerHTML = data.slice(0,6).map(v => `
+      <div class="veh-item">
+        <div class="veh-dot ${v.statut}"></div>
+        <div class="veh-info">
+          <div class="veh-immat">${v.immatriculation}</div>
+          <div class="veh-type">${v.type} · ${v.statut}</div>
+        </div>
+        <div class="veh-km">${Number(v.kilometrage||0).toLocaleString()} km</div>
+      </div>`).join('');
   } catch(e) {}
 }
 
@@ -259,62 +457,34 @@ async function loadCharts() {
   if (chartsLoaded) return;
   chartsLoaded = true;
   try {
-    const [tR, vR, iR] = await Promise.all([
-      fetch(`${API}/api/trajets`),
-      fetch(`${API}/api/vehicules`),
-      fetch(`${API}/api/incidents`)
-    ]);
+    const [tR,vR,iR] = await Promise.all([fetch(`${API}/api/trajets`),fetch(`${API}/api/vehicules`),fetch(`${API}/api/incidents`)]);
     const trajets=await tR.json(), vehicules=await vR.json(), incidents=await iR.json();
 
-    // Trajets par ligne
     const lignesCount={};
     trajets.forEach(t=>{ const k=t.ligne||'?'; lignesCount[k]=(lignesCount[k]||0)+1; });
     destroyChart('chart-lignes');
-    chartInstances['chart-lignes']=new Chart(document.getElementById('chart-lignes'),{
-      type:'bar', data:{labels:Object.keys(lignesCount),datasets:[{label:'Trajets',data:Object.values(lignesCount),backgroundColor:'#1a56db',borderRadius:6}]},
-      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}
-    });
+    chartInstances['chart-lignes']=new Chart(document.getElementById('chart-lignes'),{type:'bar',data:{labels:Object.keys(lignesCount),datasets:[{label:'Trajets',data:Object.values(lignesCount),backgroundColor:'#1a56db',borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});
 
-    // Recettes par mois
     const recetteMois={};
-    trajets.forEach(t=>{
-      if (!t.date_heure_depart) return;
-      const m=new Date(t.date_heure_depart).toLocaleDateString('fr',{month:'short',year:'2-digit'});
-      recetteMois[m]=(recetteMois[m]||0)+Number(t.recette||0);
-    });
+    trajets.forEach(t=>{ if(!t.date_heure_depart)return; const m=new Date(t.date_heure_depart).toLocaleDateString('fr',{month:'short',year:'2-digit'}); recetteMois[m]=(recetteMois[m]||0)+Number(t.recette||0); });
     destroyChart('chart-recettes');
-    chartInstances['chart-recettes']=new Chart(document.getElementById('chart-recettes'),{
-      type:'line', data:{labels:Object.keys(recetteMois),datasets:[{label:'FCFA',data:Object.values(recetteMois),borderColor:'#059669',backgroundColor:'rgba(5,150,105,0.1)',fill:true,tension:0.4}]},
-      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}
-    });
+    chartInstances['chart-recettes']=new Chart(document.getElementById('chart-recettes'),{type:'line',data:{labels:Object.keys(recetteMois),datasets:[{label:'FCFA',data:Object.values(recetteMois),borderColor:'#059669',backgroundColor:'rgba(5,150,105,0.1)',fill:true,tension:0.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});
 
-    // Incidents par type
     const incT={};
     incidents.forEach(i=>{ incT[i.type]=(incT[i.type]||0)+1; });
     destroyChart('chart-incidents');
-    chartInstances['chart-incidents']=new Chart(document.getElementById('chart-incidents'),{
-      type:'doughnut', data:{labels:Object.keys(incT),datasets:[{data:Object.values(incT),backgroundColor:['#ef4444','#f59e0b','#3b82f6','#8b5cf6']}]},
-      options:{responsive:true,maintainAspectRatio:false}
-    });
+    chartInstances['chart-incidents']=new Chart(document.getElementById('chart-incidents'),{type:'doughnut',data:{labels:Object.keys(incT),datasets:[{data:Object.values(incT),backgroundColor:['#ef4444','#f59e0b','#3b82f6','#8b5cf6']}]},options:{responsive:true,maintainAspectRatio:false}});
 
-    // Top chauffeurs
-    const cc={}, cn={};
-    trajets.forEach(t=>{ cc[t.chauffeur_id]=(cc[t.chauffeur_id]||0)+1; cn[t.chauffeur_id]=(t.chauffeur_nom||'')+ ' '+(t.chauffeur_prenom||''); });
+    const cc={},cn={};
+    trajets.forEach(t=>{ cc[t.chauffeur_id]=(cc[t.chauffeur_id]||0)+1; cn[t.chauffeur_id]=(t.chauffeur_nom||'')+' '+(t.chauffeur_prenom||''); });
     const sorted=Object.entries(cc).sort((a,b)=>b[1]-a[1]).slice(0,5);
     destroyChart('chart-chauffeurs');
-    chartInstances['chart-chauffeurs']=new Chart(document.getElementById('chart-chauffeurs'),{
-      type:'bar', data:{labels:sorted.map(([id])=>cn[id]||'C'+id),datasets:[{label:'Trajets',data:sorted.map(([,v])=>v),backgroundColor:'#8b5cf6',borderRadius:6}]},
-      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},indexAxis:'y',scales:{x:{beginAtZero:true}}}
-    });
+    chartInstances['chart-chauffeurs']=new Chart(document.getElementById('chart-chauffeurs'),{type:'bar',data:{labels:sorted.map(([id])=>cn[id]||'C'+id),datasets:[{label:'Trajets',data:sorted.map(([,v])=>v),backgroundColor:'#8b5cf6',borderRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},indexAxis:'y',scales:{x:{beginAtZero:true}}}});
 
-    // Statut véhicules
     const st={actif:0,maintenance:0,hors_service:0};
     vehicules.forEach(v=>{ if(st[v.statut]!==undefined) st[v.statut]++; });
     destroyChart('chart-vehicules');
-    chartInstances['chart-vehicules']=new Chart(document.getElementById('chart-vehicules'),{
-      type:'pie', data:{labels:['Actif','Maintenance','Hors service'],datasets:[{data:Object.values(st),backgroundColor:['#059669','#f59e0b','#ef4444']}]},
-      options:{responsive:true,maintainAspectRatio:false}
-    });
+    chartInstances['chart-vehicules']=new Chart(document.getElementById('chart-vehicules'),{type:'pie',data:{labels:['Actif','Maintenance','Hors service'],datasets:[{data:Object.values(st),backgroundColor:['#059669','#f59e0b','#ef4444']}]},options:{responsive:true,maintainAspectRatio:false}});
   } catch(e){ console.error('Erreur charts:',e); }
 }
 
@@ -324,7 +494,6 @@ async function loadAlertes() {
   try {
     const [vR,iR]=await Promise.all([fetch(`${API}/api/vehicules`),fetch(`${API}/api/incidents`)]);
     const vehicules=await vR.json(), incidents=await iR.json();
-
     vehicules.forEach(v=>{
       if(v.kilometrage>80000) alertesData.push({type:'grave',icon:'🚨',title:`${v.immatriculation} — ${Number(v.kilometrage).toLocaleString()} km`,desc:'Seuil 80 000 km dépassé. Maintenance urgente.'});
       else if(v.kilometrage>60000) alertesData.push({type:'moyen',icon:'⚠️',title:`${v.immatriculation} — ${Number(v.kilometrage).toLocaleString()} km`,desc:'Approche seuil critique. Révision à planifier.'});
@@ -333,15 +502,11 @@ async function loadAlertes() {
     incidents.filter(i=>!i.resolu&&i.gravite==='grave').forEach(i=>{
       alertesData.push({type:'grave',icon:'🔴',title:`Incident grave non résolu — ${i.type}`,desc:i.description||'Aucune description'});
     });
-
-    const ac=document.getElementById('alertes-content');
-    ac.innerHTML = alertesData.length===0
+    document.getElementById('alertes-content').innerHTML = alertesData.length===0
       ? '<div style="text-align:center;padding:2rem;color:#94a3b8">✅ Aucune alerte active</div>'
       : alertesData.map(a=>`<div class="alert-item ${a.type}"><div class="alert-icon">${a.icon}</div><div><div class="alert-title">${a.title}</div><div class="alert-desc">${a.desc}</div></div></div>`).join('');
-
     const graves=alertesData.filter(a=>a.type==='grave').length;
     if(graves>0){ document.getElementById('alert-badge').style.display='flex'; document.getElementById('alert-count').textContent=graves; }
-
     const vm=vehicules.filter(v=>v.statut==='maintenance'||v.kilometrage>80000).length;
     const ig=incidents.filter(i=>!i.resolu&&i.gravite==='grave').length;
     document.getElementById('recommandations-content').innerHTML=`
