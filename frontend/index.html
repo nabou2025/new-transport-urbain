@@ -194,7 +194,7 @@
 // ✅ URL DYNAMIQUE : marche en local ET en production Railway
 const API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:3000'
-  : '';  // En prod, même domaine donc pas de préfixe
+  : 'https://new-transport-urbain-production.up.railway.app';
 
 let alertesData = [];
 let chartsLoaded = false;
