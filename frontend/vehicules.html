@@ -28,7 +28,7 @@
 </main>
 <script>
 function badge(s){const m={actif:['#E1F5EE','#085041'],maintenance:['#FAEEDA','#633806'],hors_service:['#FCEBEB','#791F1F']};const[bg,c]=m[s]||['#eee','#333'];return`<span class="badge" style="background:${bg};color:${c}">${s.replace('_',' ')}</span>`}
-fetch('http://localhost:3000/api/vehicules').then(r=>r.json()).then(v=>{
+fetch('https://new-transport-urbain-production.up.railway.app/api/vehicules').then(r=>r.json()).then(v=>{
   document.getElementById('tbl').innerHTML=`
     <tr><th>Immatriculation</th><th>Marque</th><th>Modèle</th><th>Capacité</th><th>Kilométrage</th><th>Statut</th><th>Mise en service</th></tr>
     ${v.map(x=>`<tr>
