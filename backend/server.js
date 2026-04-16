@@ -8,7 +8,10 @@ app.use(cors());
 app.use(express.json());
 
 // Sert le frontend (dossier ../frontend en local, ./frontend en prod)
-app.use(express.static(path.join(__dirname, '..', 'frontend')));
+// app.use(express.static(path.join(__dirname, '..', 'frontend')));
+
+// Chemin corrigé pour Railway
+const frontendPath = path.join(process.cwd(), 'frontend');
 
 // Routes API
 app.use('/api/vehicules', require('./routes/vehicules'));
